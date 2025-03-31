@@ -19,7 +19,7 @@ TrackFlow is a dynamic web platform designed for music enthusiasts. With TrackFl
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone hhttps://github.com/d0rb3n/TrackFlow
+   git clone https://github.com/d0rb3n/TrackFlow
    ```
 2. Navigate to the project directory:
    ```sh
@@ -62,5 +62,5 @@ TrackFlow is a dynamic web platform designed for music enthusiasts. With TrackFl
 ---
 Enjoy the rhythm with **TrackFlow**! 🎶
 
-### Team members
+### Team member
 Amrayev Ruslan, Makhmutov Darkhan, Kosherbay Batyrkhan
