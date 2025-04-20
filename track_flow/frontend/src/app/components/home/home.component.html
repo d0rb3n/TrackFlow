@@ -1,0 +1,30 @@
+<div class="jumbotron py-5">
+  <h1>Welcome to Track Flow!</h1>
+  <p class="lead">Discover, organize, and enjoy your favorite music.</p>
+  <hr class="my-4">
+  <p>Explore genres, artists, tracks, and create your own playlists.</p>
+  <a class="btn btn-primary btn-lg" routerLink="/genres" role="button">Browse Genres</a>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-12">
+    <h2>Featured Genres</h2>
+    <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+    <div class="text-center" *ngIf="loading">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div class="row" *ngIf="!loading">
+      <div class="col-md-4 mb-4" *ngFor="let genre of genres">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ genre.name }}</h5>
+            <p class="card-text">{{ genre.description || 'No description available' }}</p>
+            <a routerLink="/genres" class="btn btn-outline-primary">View Tracks</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

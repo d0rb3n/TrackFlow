@@ -1,0 +1,15 @@
+.card {
+  margin-bottom: 20px;
+}
+
+.track-item {
+  transition: transform 0.2s;
+}
+
+.track-item:hover {
+  transform: translateY(-3px);
+}
+
+audio {
+  max-width: 100%;
+} 

@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="page-header">Playlists</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h4>Create Playlist</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="playlistForm" (ngSubmit)="onSubmit()">
+          <div class="alert alert-danger" *ngIf="error">
+            {{error}}
+          </div>
+          <div class="alert alert-success" *ngIf="success">
+            {{success}}
+          </div>
+          
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name" 
+                  [ngClass]="{ 'is-invalid': f['name'].invalid && f['name'].touched }">
+            <div *ngIf="f['name'].invalid && f['name'].touched" class="invalid-feedback">
+              <div *ngIf="f['name'].errors?.['required']">Name is required</div>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="2" formControlName="description"></textarea>
+          </div>
+          
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="is_public" formControlName="is_public">
+            <label class="form-check-label" for="is_public">Public Playlist</label>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Select Tracks</label>
+            <div class="track-selection">
+              <div class="form-check" *ngFor="let track of tracks">
+                <input class="form-check-input" type="checkbox" 
+                       [id]="'track_' + track.id" 
+                       [checked]="isTrackSelected(track.id!)"
+                       (change)="toggleTrackSelection(track.id!)">
+                <label class="form-check-label" [for]="'track_' + track.id">
+                  {{ track.title }} - {{ track.artist_name }}
+                </label>
+              </div>
+            </div>
+            <div *ngIf="tracks.length === 0" class="alert alert-warning mt-2">
+              No tracks available. Please add tracks first.
+            </div>
+          </div>
+          
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary" [disabled]="playlistForm.invalid || submitting || tracks.length === 0">
+              <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+              Create Playlist
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h4>My Playlists</h4>
+      </div>
+      <div class="card-body">
+        <div class="text-center" *ngIf="loading">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        
+        <div *ngIf="!loading && playlists.length === 0" class="alert alert-info">
+          No playlists found. Create your first playlist to get started.
+        </div>
+        
+        <div class="row" *ngIf="!loading && playlists.length > 0">
+          <div class="col-md-6 mb-4" *ngFor="let playlist of playlists">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">{{ playlist.name }}</h5>
+                <p class="card-text">{{ playlist.description || 'No description' }}</p>
+                <p class="card-text">
+                  <small class="text-muted">
+                    Tracks: {{ playlist.tracks?.length || 0 }} | 
+                    Visibility: {{ playlist.is_public ? 'Public' : 'Private' }}
+                  </small>
+                </p>
+              </div>
+              <div class="card-footer text-muted">
+                Created: {{ playlist.created_at | date:'medium' }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="page-header">Tracks</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h4>Add Track</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="trackForm" (ngSubmit)="onSubmit()">
+          <div class="alert alert-danger" *ngIf="error">
+            {{error}}
+          </div>
+          <div class="alert alert-success" *ngIf="success">
+            {{success}}
+          </div>
+          
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title" 
+                  [ngClass]="{ 'is-invalid': f['title'].invalid && f['title'].touched }">
+            <div *ngIf="f['title'].invalid && f['title'].touched" class="invalid-feedback">
+              <div *ngIf="f['title'].errors?.['required']">Title is required</div>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="artist" class="form-label">Artist</label>
+            <select class="form-select" id="artist" formControlName="artist"
+                  [ngClass]="{ 'is-invalid': f['artist'].invalid && f['artist'].touched }">
+              <option value="">Select Artist</option>
+              <option *ngFor="let artist of artists" [value]="artist.id">{{artist.name}}</option>
+            </select>
+            <div *ngIf="f['artist'].invalid && f['artist'].touched" class="invalid-feedback">
+              <div *ngIf="f['artist'].errors?.['required']">Artist is required</div>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="genre" class="form-label">Genre</label>
+            <select class="form-select" id="genre" formControlName="genre">
+              <option value="">Select Genre (Optional)</option>
+              <option *ngFor="let genre of genres" [value]="genre.id">{{genre.name}}</option>
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="duration" class="form-label">Duration (hh:mm:ss)</label>
+            <input type="text" class="form-control" id="duration" formControlName="duration">
+          </div>
+          
+          <div class="mb-3">
+            <label for="release_date" class="form-label">Release Date</label>
+            <input type="date" class="form-control" id="release_date" formControlName="release_date">
+          </div>
+          
+          <div class="mb-3">
+            <label for="audio_file" class="form-label">Audio File</label>
+            <input type="file" class="form-control" id="audio_file" (change)="onFileChange($event)" accept="audio/*">
+          </div>
+          
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary" [disabled]="trackForm.invalid || submitting">
+              <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h4>Track List</h4>
+      </div>
+      <div class="card-body">
+        <div class="text-center" *ngIf="loading">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        
+        <div *ngIf="!loading && tracks.length === 0" class="alert alert-info">
+          No tracks found. Add a new track to get started.
+        </div>
+        
+        <div class="track-list" *ngIf="!loading && tracks.length > 0">
+          <div class="track-item" *ngFor="let track of tracks">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-9">
+                    <h5 class="card-title">{{ track.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ track.artist_name }}</h6>
+                    <p class="card-text">
+                      <small class="text-muted">
+                        Genre: {{ track.genre_name || 'N/A' }} | 
+                        Duration: {{ track.duration || '00:03:00' }} | 
+                        Released: {{ track.release_date | date }}
+                      </small>
+                    </p>
+                  </div>
+                  <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <audio controls *ngIf="track.audio_file" class="w-100">
+                      <source [src]="track.audio_file" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

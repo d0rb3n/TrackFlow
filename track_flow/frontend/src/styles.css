@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.page-header {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #673ab7;
+  border-color: #673ab7;
+}
+
+.btn-primary:hover {
+  background-color: #5e35b1;
+  border-color: #5e35b1;
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  font-weight: 500;
+}
+
+.alert {
+  margin-top: 20px;
+} 
