@@ -1,0 +1,11 @@
+.card {
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-footer {
+  font-size: 0.8rem;
+} 

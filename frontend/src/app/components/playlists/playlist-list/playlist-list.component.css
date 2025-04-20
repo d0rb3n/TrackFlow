@@ -1,0 +1,15 @@
+.card {
+  margin-bottom: 20px;
+}
+
+.track-selection {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  padding: 10px;
+}
+
+.form-check {
+  margin-bottom: 8px;
+} 
