@@ -1,0 +1,163 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+<<<<<<< HEAD
+    "track-flow-frontend": {
+=======
+    "frontend": {
+>>>>>>> f5679b1027489cb14e5391a2bbf76a4aa0e0f772
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+<<<<<<< HEAD
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/track-flow-frontend",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+=======
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/frontend",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+>>>>>>> f5679b1027489cb14e5391a2bbf76a4aa0e0f772
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+<<<<<<< HEAD
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+=======
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+>>>>>>> f5679b1027489cb14e5391a2bbf76a4aa0e0f772
+              "src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+<<<<<<< HEAD
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+=======
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+>>>>>>> f5679b1027489cb14e5391a2bbf76a4aa0e0f772
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+<<<<<<< HEAD
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+=======
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+>>>>>>> f5679b1027489cb14e5391a2bbf76a4aa0e0f772
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+<<<<<<< HEAD
+              "browserTarget": "track-flow-frontend:build:production"
+            },
+            "development": {
+              "browserTarget": "track-flow-frontend:build:development"
+=======
+              "buildTarget": "frontend:build:production"
+            },
+            "development": {
+              "buildTarget": "frontend:build:development"
+>>>>>>> f5679b1027489cb14e5391a2bbf76a4aa0e0f772
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+<<<<<<< HEAD
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "track-flow-frontend:build"
+          }
+=======
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+>>>>>>> f5679b1027489cb14e5391a2bbf76a4aa0e0f772
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+<<<<<<< HEAD
+              "src/favicon.ico",
+              "src/assets"
+=======
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+>>>>>>> f5679b1027489cb14e5391a2bbf76a4aa0e0f772
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+<<<<<<< HEAD
+    "analytics": false
+  }
+} 
+=======
+    "analytics": "9b446994-e444-4157-9f04-cda112c2b3ad"
+  }
+}
+>>>>>>> f5679b1027489cb14e5391a2bbf76a4aa0e0f772
